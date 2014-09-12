@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;CHARSET=UTF-8">
+  <title>SWRC Fit</title>
+  <meta name="author" content="Katsutoshi Seki">
+  <LINK REL="stylesheet" TYPE="text/css" HREF="swrc.css">
+  <link rel="alternate" href="http://sourceforge.net/export/rss2_projfiles.php?group_id=197420" type="application/rss+xml" title="RSS">
+
+</head>
+
+<body>
+
+<p>[ English | <a href="jp/index.html">&#x65E5;&#x672C;&#x8A9E;</a> ]</p>
+
+<h1>SWRC Fit</h1>
+
+<table border="0">
+<tr>
+<td>
+<p>
+The soil hydraulic parameters for analyzing water movement in variably saturated soil can be determined by fittig soil hydraulic model to a soil water retention curve.
+SWRC Fit performs nonlinear fitting of 5 soil hydraulic models to measured <a href="http://www.engr.uconn.edu/environ/envphys/pdf/vadose_pdf/SWC_revised01.pdf">soil water retention curve</a>; the relationship between the soil water potential and volumetric water content.
+</p>
+<ul>
+<li>It is written in numerical calculation language GNU Octave.</li>
+<li>Web interface is also available.</li>
+<li>Initial estimate of parameters is automatically determined by the program.</li>
+<li>Five models are (1) Brooks and Corey model, (2) van Genuchten model, (3) Kosugi model, (4) Durner model and (5) Seki model.</li>
+</ul>
+
+<p>
+This software is primarily intended for scientists in the field of hydrology and geoscience to help their research. It has been extensively used and cited in over 50 scientific papers.
+</p>
+</td>
+<td>
+<img src="swrc.png" alt="Soil Water Retention Curve" width="320" height="240" border="0">
+<p>Soil water retention curve</p>
+</td>
+</tr>
+
+</table>
+
+<h2>Web interface</h2>
+
+<p><a href="http://purl.org/net/swrc/"><img src="bob.png" alt="icon" width="25" height="25" border="0"> SWRC Fit web interface</a> is also available.</p>
+
+
+<h2>Download</h2>
+
+Version 1.3 was released on September 7, 2014. See <a href="https://github.com/sekika/swrcfit/blob/master/ChangeLog">version history</a>.
+
+<ul>
+<li><a href="http://prdownloads.sourceforge.net/swrcfit/swrcfit-1.3.zip?download"><img src="download.gif" alt="download" width="105" height="23" border="0"> Download the latest version of SWRC Fit (swrcfit-1.3.zip)</a></li>
+<!-- li><a href="https://sourceforge.net/project/showfiles.php?group_id=197420">See all the downloadable files in archive</a></li -->
+<li><a href="https://github.com/sekika/swrcfit/blob/master/README.md">Online user's manual</a> is available.</li>
+</ul>
+
+<p>If you like older interface, with 2 files of swrc.m and bimodal.m, please use <a href="http://prdownloads.sourceforge.net/swrcfit/swrcfit-1.2.zip?download">version 1.2</a>.</p>
+
+<p>Version 2.0 with a new feature of drawing graph is now under development. You can download and test beta version from <a href="https://github.com/sekika/swrcfit/releases">here</a></p>
+
+
+<!-- p>To get information on the coming update:<p>
+<ul>
+<li><a href="https://lists.sourceforge.net/lists/listinfo/swrcfit-release">Subscribe mailing list for announcement of release</a> (<a href="http://sourceforge.net/mailarchive/forum.php?forum_name=swrcfit-release">Archive</a>)</li>
+<li><a href="http://sourceforge.net/export/rss2_projfiles.php?group_id=197420"><img src="feed.png" alt="feed" width="16" height="16" border="0"> Subscribe file release RSS</a></li>
+</ul -->
+
+<h2>Soil hydraulic models</h2>
+
+<p>3 unimodal (BC, VG, LN) and 2 bimodal (DB, BL) models.</p>
+
+<table border="1"><tr><td>Model<td>Reference<td>Equation</tr>
+<tr><td align="center">BC<td>Brooks and Corey (1964)<td><img src="img/BC.png" width=146 height=75 alt=BC>
+</tr>
+
+<tr><td align="center">VG<td>van Genuchten (1980)<td><img src="img/VG.png" width=108 height=48 alt=VG> (m=1-1/n)
+
+</tr>
+<tr><td align="center">LN<td>Kosugi (1996)<td><img src="img/LN.png" width=110 height=42 alt=LN>
+</tr>
+<tr><td align="center">DB<td>Durner (1994)<td><img src="img/DB.png" width=292 height=52 alt=DB><br>(m<sub>i</sub>=1-1/n<sub>i</sub>)</tr>
+<tr><td align="center">BL<td>Seki (2007)<td><img src="img/BL.png" width=282 height=49 alt=BL></tr>
+</table>
+
+
+<p>where h is the suction head, &theta; is volumetric water content, S<sub>e</sub> is the effective water content defined by <img src="img/Se.png" width=76 height=42 alt=Se>, i.e., <img src="img/Se2.png" alt=theta>, 
+and Q(x) is the complementary cumulative normal distribution function, defined by Q(x)=1-&Phi;(x), in which &Phi;(x) is a normalized form of the <a href="http://mathworld.wolfram.com/NormalDistributionFunction.html">cumulative normal distribution function</a>. Please note that Q(x) is different from error function. Other parameters are soil hydraulic parameters to be estimated.</p>
+
+<!-- h2>Development</h2>
+
+<ul>
+<li><a href="https://sourceforge.net/projects/swrcfit/">Project summary of SWRC Fit at SourceForge.net</a></li>
+<li><a href="https://sourceforge.net/forum/?group_id=197420">Forum at SourceForge.net</a> ... for help and open discussion</li>
+<li><a href="http://swrcfit.wiki.sourceforge.net/Wishlist">Wishlist</a> ... for future development
+</ul -->
+
+<h2>Reference</h2>
+
+<ul>
+<li>Brooks, R.H., and A.T. Corey (1964): Hydraulic properties of porous media. Hydrol. Paper 3. Colorado State Univ., Fort Collins, CO, USA.</li>
+<li>Durner, W. (1994): Hydraulic conductivity estimation for soils with heterogeneous pore structure. <i>Water Resour. Res.</i>, 30(2): 211-223.</li>
+<li>Kosugi, K. (1996): Lognormal distribution model for unsaturated soil hydraulic properties. <i>Water Resour. Res.</i> 32: 2697-2703.</li>
+<li>Seki, K. (2007) SWRC fit - a nonlinear fitting program with a water retention curve for soils having unimodal and bimodal pore structure. <i>Hydrol. Earth Syst. Sci. Discuss.</i>, 4: 407-437. SRef-ID: <a href="http://direct.sref.org/1812-2116/hessd/2007-4-407">1812-2116/hessd/2007-4-407</a></li>
+<li>Thller, M. and D. Or (2003) Retetion of water in soil and the soil water characteristic curve. PDF textbook published online at the server of University of Connecticut. <a href="http://www.engr.uconn.edu/environ/envphys/pdf/vadose_pdf/SWC_revised01.pdf"</a>PDF</a></li>
+<li>van Genuchten, M. (1980): A closed-form equation for predicting the hydraulic conductivity of unsaturated soils. <i>Soil Sci. Soc. Am. J.</i> 44:892-898.</li>
+</ul> 
+
+<h2>Citation of this work</h2>
+<p>Please cite this paper when you publish your work using SWRC Fit.</p>
+
+<ul>
+<li>Seki, K. (2007) SWRC fit - a nonlinear fitting program with a water retention curve for soils having unimodal and bimodal pore structure. Hydrol. Earth Syst. Sci. Discuss., 4: 407-437. <a href="http://dx.doi.org/10.5194/hessd-4-407-2007">doi:10.5194/hessd-4-407-2007</a></li>
+</ul>
+
+<p><a href="http://www.hydrol-earth-syst-sci-discuss.net/4/407/2007/hessd-4-407-2007.bib">BibTeX</a> and <a href="http://www.hydrol-earth-syst-sci-discuss.net/4/407/2007/hessd-4-407-2007.ris">EndNote</a> files are also available.</p>
+
+<h2><a name="cited">Researches conducted with SWRC Fit</a></h2>
+
+<ul>
+<li>Moret-Fernandez, D., J.L. Arrue, V. Perez and M.V. Lopez (2008): A TDR-pressure cell design for measuring the soil-water retention curve. <i>Soil and Tillage Research</i>, 100(1-2): 114-119. DOI: <a href="http://dx.doi.org/10.1016/j.still.2008.05.009">10.1016/j.still.2008.05.009</a></li>
+<li>Saito, H., K. Seki, and J. Simunek (2009): An alternative deterministic method for the spatial interpolation of water retention parameters. <i>Hydrology and Earth System Sciences</i>, 13: 453-465. SRef-ID: <a href="http://direct.sref.org/1607-7938/hess/2009-13-453">1607-7938/hess/2009-13-453</a></li>
+<li>Hamamoto, S., K. Seki, and T. Miyazaki (2009): Effect of aggregate structure on VOC gas adsorption onto volcanic ash soil. <i>Journal of Hazardous Materials</i> 166(1): 207-212. DOI: <a href="http://dx.doi.org/10.1016/j.jhazmat.2008.11.008">10.1016/j.jhazmat.2008.11.008</a></li>
+<li>Hamamoto, S., P. Moldrup, K. Kawamoto, T. Komatsu, and D.E. Rolston (2009): Unified measurement system for the gas dispersion coefficient, air permeability, and gas diffusion coefficient in variably saturated soil. <i>Soil Science Society of America Journal</i> 73: 1921-1930. DOI: <a href="http://dx.doi.org/10.2136/sssaj2009.0012">10.2136/sssaj2009.0012</a></li>
+<li>Soe, A.K.K., M. Osada, and T.T. Nwe Win (2009): Evaluating the deformation behaviour of Shirahama sandstone in moisture transfer process. <i>International Journal of the JCRM</i>, 5(2): 69-76. <a href="http://www.rocknet-japan.org/IJJCRM/v5n2/v5n2-03.pdf">PDF</a></li>
+<li>Toriyama, J., S. Ohta, M. Araki, K. Kosugi, T. Nobuhiro, N. Kabeya, A. Shimizu, K. Tamai, M. Kanzaki and S. Chann (2010): Soil pore characteristics of evergreen and deciduous forests of the tropical monsoon region in Cambodia. <i>Hydrological Processes</i>, 25(5): 714-726. DOI: <a href="http://dx.doi.org/10.1002/hyp.7859">10.1002/hyp.7859</a></li>
+<li>Menghistu, M.T. (2010): Development of a numerical model for unsaturated/saturated hydraulics in ash/brine systems. Ph.D. Thesis, University of the Free State Bloemfontein. <a href="http://etd.uovs.ac.za/ETD-db/theses/available/etd-12152010-121738/unrestricted/MenghistuMT.pdf">PDF</a></li>
+<li>Hamamoto, S., P. Moldrup, K. Kawamoto, P.N. Wickramarachchi, M. Nagamori and T. Komatsu (2011): Extreme compaction effects on gas transport parameters and estimated climate gas exchange for a landfill final cover soil. <i>Journal of Geotechnical & Geoenvironmental Engineering</i> 137(7): 653. DOI: <a href="http://dx.doi.org/10.1061/(ASCE)GT.1943-5606.0000459">10.1061/(ASCE)GT.1943-5606.0000459</a></li>
+<li>Moret-Fernandez, D., Y. Pueyo, C.G. Bueno and C.L. Alados (2011): Hydro-physical responses of gypseous and non-gypseous soils to livestock grazing in a semi-arid region of NE Spain. <i>Agricultural Water Management</i> 98(12): 1822-1827. DOI: <a href="http://dx.doi.org/10.1016/j.agwat.2011.07.001">10.1016/j.agwat.2011.07.001</a></li>
+
+</ul>
+
+<p>and <a href="http://scholar.google.com/scholar?oi=bibs&hl=en&cites=7295614925292719046&as_sdt=5">more</a>. Thank you.</p>
+
+<!-- h2>Link</h2>
+<ul>
+<li><a href="http://www.gnu.org/software/octave/">Octave</a> ... high-level language, primarily intended for numerical computations. SWRC Fit is written in GNU Octave language.</li>
+<li><a href="http://octave.sourceforge.net/">Octave-Forge</a> ... SWRC Fit requires GNU Octave and Octave-Forge package. Octave-Forge supplies pre-built installers for Octave.</li>
+<li><a href="http://www.unige.ch/math/folks/loisel/www.math.mcgill.ca/loisel/octave-workshop/">Octave Workshop</a> ... Integrated development environment for the GNU Octave</li>
+<li><a href="http://www.pc-progress.com/">PC-Progress</a> ... Hydrus series for analysis of water flow and solute transport in variably saturated porous media, and RETC for analysing soil water retention and hydraulic conductivity functions of unsaturated soils.</li>
+</ul -->
+
+<h2>Question</h2>
+
+<p><a href="https://github.com/sekika/swrcfit/issues?q=is%3Aissue+label%3Aquestion">Here</a> you can find a list of questions and answers about SWRC Fit. You can submit your own question by getting the accout of GitHub (use the green "Sign up" button) and pressing the green "New Issue" button. Please select the label of "question". It is preferable to send your question publicly this way, because other people having the same question can find answer on the web. However, if your question is confidential, please contact me by email. Tou can find my email address in <a href="http://file.scirp.org/Html/2-1660128_33490.htm">this paper</a>.</p>
+
+<hr>
+
+<div class="footer">
+This site is hosted by<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=197420&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a><br>
+URL: http://swrcfit.sourceforge.net/<br>
+SWRC Fit is licensed under GNU General Public License.<br>
+Author: Katsutoshi Seki
+</div>
+
+</body>
+</html>
+

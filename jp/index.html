@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="jp">
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<title>SWRC Fit</title>
+<link rel="purl" href="http://purl.org/net/swrc/">
+<LINK REL="stylesheet" TYPE="text/css" HREF="swrc.css">
+</head>
+
+<BODY>
+
+<p>[ <a href="../index.html">English</a> | 日本語 ]</p>
+
+<h1>SWRC Fit - 土壌水分特性曲線の非線形回帰プログラム -</h1>
+
+<table border="0">
+<tr>
+<td>
+
+<p>
+土壌水分特性のデータを、モデルによって近似し、土壌水分特性パラメータを決定することができるフリーソフトを公開しています。
+このプログラムには、以下のような特徴があります。
+</p>
+
+<ul>
+<li>複数の土壌水分特性モデルに対して、レーベンバーグ・マルカート法によるパラメータの決定ができる。
+<li>パラメータの初期値や増分割合の設定を、プログラムが自動的に行うため、ユーザーはデータを入力してプログラムを実行するだけで良い。
+<li>数値計算言語 GNU Octave によって記述されている。Windows, Mac OS X, Linux, UNIX等、GNU Octaveが動作する様々なOSで動かすことができる。
+<li>WebインターフェイスによりGNU Octaveをインストールすることなく簡便に実行できる。
+</ul>
+
+<td>
+<img src="swrc.jpg" alt="画面" width="250" height="205">
+<p>土壌水分特性曲線</p>
+</tr>
+</table>
+
+<h2>ダウンロード</h2>
+
+<p>zipファイルを展開してください。swrcfit がプログラム本体です。</p>
+
+<p>最新バージョンリリース: 2014年9月7日</p>
+
+<ul>
+<li><a href="http://prdownloads.sourceforge.net/swrcfit/swrcfit-1.3.zip?download"><img src="../download.gif" alt="download" width="105" height="23" border="0"> <a href="http://prdownloads.sourceforge.net/swrcfit/swrcfit-1.3.zip?download">SWRC Fit 最新バージョン (swrcfit-1.3.zip)</a></li>
+<li><a href="https://github.com/sekika/swrcfit/blob/master/README.md">オンラインマニュアル</a></li>
+<li>解説論文: <a href="https://js-soilphysics.com/data/pdf/105067.pdf">土壌の物理性</a> (日本語PDF), <a href="http://www.hydrol-earth-syst-sci-discuss.net/4/407/2007/hessd-4-407-2007.html">HESSD</a> (英語)</li>
+<li>なお、最新バージョンは論文に掲載されているものとは使い方が若干異なるので、論文を参照して実行する時には、以下のバージョンを使用して下さし。
+<li><a href="http://prdownloads.sourceforge.net/swrcfit/swrcfit-1.0.zip?download">SWRC Fit バージョン1.0 (swrcfit-1.0.zip)</a> ... 「土壌の物理性」に掲載されたバージョンです</li>
+<li><a href="http://prdownloads.sourceforge.net/swrcfit/swrcfit-1.1.zip?download">SWRC Fit バージョン1.1 (swrcfit-1.1.zip)</a> ...  HESSD に掲載されたバージョンです</li>
+<li><a href="https://raw.githubusercontent.com/sekika/swrcfit/master/swrc.txt">サンプルデータ</a>
+<li><a href="https://github.com/sekika/swrcfit/raw/master/swrc.xlsx">計算結果チェック用Excelシート</a>
+</ul>
+
+
+<h2>Webインターフェイス</h2>
+
+<p><a href="http://purl.org/net/swrc/"><img src="../bob.png" alt="icon" width="25" height="25" border="0">  Webバージョン</a>です。「# Paste your data here」とあるところに水分特性のデータを入力してCalculateボタンを押すと、計算結果とグラフが表示されます。</p>
+
+<h2>モデル</h2>
+
+<table border="1"><tr><td>略号<td>文献<td>式</tr>
+<tr><td align="center">BC<td>Brooks and Corey (1964)<td><img src="../img/BC.png" width=146 height=75 alt=BC>
+</tr>
+
+<tr><td align="center">VG<td>van Genuchten (1980)<td><img src="../img/VG.png" width=108 height=48 alt=VG> (m=1-1/n)
+
+
+</tr>
+<tr><td align="center">LN<td>Kosugi (1996)<td><img src="../img/LN.png" width=110 height=42 alt=LN>
+</tr>
+<tr><td align="center">DB<td>Durner (1994)<td><img src="../img/DB.png" width=292 height=52 alt=DB><br>(m<sub>i</sub>=1-1/n<sub>i</sub>)</tr>
+<tr><td align="center">BL<td>Seki (2007)<td><img src="../img/BL.png" width=282 height=49 alt=BL></tr>
+</table>
+
+
+<p>ここで、h はサクション、&theta;は体積含水率、S<sub>e</sub>は<img src="../img/Se.png" width=76 height=42 alt=Se>にて定義される有効水分、すなわち<img src="../img/Se2.png" alt=theta>、Q(x)は<a href="http://mathworld.wolfram.com/NormalDistributionFunction.html">標準正規分布関数</a> &Phi;(x)(誤差関数とは異なる)の余関数 Q(x)=1-&Phi;(x)で、他のパラメータは土壌水分特性パラメータである。</p>
+
+
+<h2>文献</h2>
+
+<ul>
+<li>Brooks, R.H., and A.T. Corey (1964): Hydraulic properties of porous media. Hydrol. Paper 3. Colorado State Univ., Fort Collins, CO, USA.</li>
+<li>Durner, W. (1994): Hydraulic conductivity estimation for soils with heterogeneous pore structure. <i>Water Resour. Res.</i>, 30(2): 211-223.</li>
+<li>Kosugi, K. (1996): Lognormal distribution model for unsaturated soil hydraulic properties. <i>Water Resour. Res.</i> 32: 2697-2703.</li>
+<li>関勝寿 (2007) 数値計算言語Octaveによる土壌水分特性曲線の非線形回帰プログラム. 土壌の物理性, 105:67-78. <a href="http://soil.en.a.u-tokyo.ac.jp/jssp/db/pdf/105067.pdf">PDF</a></li>
+<li>Seki, K. (2007) SWRC fit - a nonlinear fitting program with a water retention curve for soils having unimodal and bimodal pore structure. <i>Hydrol. Earth Syst. Sci. Discuss.</i>, 4: 407-437. SRef-ID: <a href="http://direct.sref.org/1812-2116/hessd/2007-4-407">1812-2116/hessd/2007-4-407</a></li>
+<li>van Genuchten, M. (1980): A closed-form equation for predicting the hydraulic conductivity of unsaturated soils. <i>Soil Sci. Soc. Am. J.</i> 44:892-898.</li>
+
+</ul>
+
+<h2>このソフトを使った研究例</h2>
+
+<p>SWRC Fit は、<a href="http://scholar.google.com/scholar?oi=bibs&hl=en&cites=7295614925292719046">多くの研究で使われています</a>。</p>
+
+<HR>
+
+<p>このページのPURLは <a href="http://purl.org/net/octave/">http://purl.org/net/octave/</a> です。(<a href="http://purl.org/">PURLとは?</a>)
+<a href="http://purl.org/net/linkpurl"><img src="http://purl.org/maint/badge_pur
+l.gif" alt="Purl Friendly" height="17" width="117" border="0"></a></p>
+<P>
+管理者: <a href="http://purl.org/net/jp/seki/">関 勝寿</a>
+(ご意見・ご要望をお寄せ下さい)
+</P>
+
+This site is hosted by
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=197420&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+</body>
+</html>
