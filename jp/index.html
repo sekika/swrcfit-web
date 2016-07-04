@@ -20,15 +20,15 @@
 <td>
 
 <p>
-土壌水分特性のデータを、モデルによって近似し、土壌水分特性パラメータを決定することができるフリーソフトを公開しています。
+土壌水分特性（水分保持曲線）の測定データを<a href="http://purl.org/net/swrc/model-ja.html">いくつかの土壌水分特性モデル</a>によって近似し、まとめてパラメータを決定することができるフリーソフトを公開しています。
 このプログラムには、以下のような特徴があります。
 </p>
 
 <ul>
-<li>複数の土壌水分特性モデルに対して、レーベンバーグ・マルカート法によるパラメータの決定ができる。
-<li>パラメータの初期値や増分割合の設定をプログラムが自動的に行うため、ユーザーはデータを入力してプログラムを実行するだけで良い。
-<li>数値計算言語 GNU Octave によって記述されている。Windows, Mac OS X, Linux, UNIX等、GNU Octaveが動作する様々なOSで動かすことができる。
-<li>WebインターフェイスによりGNU Octaveをインストールすることなく簡便に実行できる。
+<li>パラメータの初期値などの面倒な設定はプログラムが自動的に行うため、測定データを入力してプログラムを実行するだけで良い。
+<li>ウェブインターフェイスによりワンクリックで計算し、グラフを描画できる。
+<li>手軽に正確な計算ができることから<a href="http://scholar.google.com/scholar?oi=bibs&hl=en&cites=7295614925292719046">多くの研究で使われている</a>実績がある。
+<li>より細かい設定で計算ができるオフラインバージョンは、数値計算言語 GNU Octave によって記述されているため様々なOSで動かすことができる。
 </ul>
 
 <td>
@@ -37,11 +37,11 @@
 </tr>
 </table>
 
-<h2>Webインターフェイス</h2>
+<h2>ウェブインターフェイス</h2>
 
 <p><a href="http://purl.org/net/swrc/index-ja.html"><img src="../bob.png" alt="icon" width="25" height="25" border="0">  Webバージョン</a>です。「# ここにデータを貼り付ける」とあるところに水分特性のデータを入力して「計算」ボタンを押すと、計算結果とグラフが表示されます。</p>
 
-<h2>インストール</h2>
+<h2>オフラインバージョン</h2>
 
 <p>最新バージョンは2015年9月23日にリリースされたバージョン2.1です。開発中のバージョン3.0では、Fredlund and Xing (1994)のモデルを追加しました。β版をダウンロードできます。<a href="https://raw.githubusercontent.com/sekika/swrcfit/master/ChangeLog">更新履歴</a>を参照して下さい。</p>
 
@@ -51,54 +51,34 @@
 <li><a href="https://osdn.jp/projects/sfnet_swrcfit/releases/">ダウンロード</a> (<a href="https://github.com/sekika/swrcfit/releases">β版</a>)</li>
 </ul>
 
-<h2>モデル</h2>
+<h2>引用</h2>
 
-<table border="1"><tr><td>モデル<td>文献<td>式<td>パラメータ</tr>
-<tr><td align="center">BC<td>Brooks and Corey (1964)<td>\(S_e = \begin{cases}\left(\dfrac{h}{h_b}\right)^{-\lambda} & (h>h_b) \\ 1 & (h \le h_b)\end{cases}\)<td>&theta;<sub>s</sub>, &theta;<sub>r</sub>, h<sub>b</sub>, &lambda;
-</tr>
-<tr><td align="center">VG<td>van Genuchten (1980)<td>\(S_e = \biggl[\dfrac{1}{1+(\alpha h)^n}\biggr]^m\) (m=1-1/n)<td>&theta;<sub>s</sub>, &theta;<sub>r</sub>, &alpha;, n
-</tr>
-<tr><td align="center">LN<td>Kosugi (1996)<td>\(S_e = Q \biggl[\dfrac{\ln(h/h_m)}{\sigma}\biggr]\)<td>&theta;<sub>s</sub>, &theta;<sub>r</sub>, h<sub>m</sub>, &sigma;
-</tr>
-<tr><td align="center">FX<td>Fredlund and Xing (1994)<td>\(S_e = C(h)\biggl[ \dfrac{1}{\ln \left[e+(h / a)^n \right]} \biggr]^m\)<td>&theta;<sub>s</sub>, &theta;<sub>r</sub>, a, m, n
-</tr>
-<tr><td align="center">DB<td>Durner (1994)<td>\(S_e = w_1\biggl[\dfrac{1}{1+(\alpha_1 h)^{n_1}}\biggr]^{m_1} + (1-w_1)\biggl[\dfrac{1}{1+(\alpha_2 h)^{n_2}}\biggr]^{m_2}\)<br>(m<sub>i</sub>=1-1/n<sub>i</sub>)<td>&theta;<sub>s</sub>, &theta;<sub>r</sub>, w<sub>1</sub>, &alpha;<sub>1</sub>, n<sub>1</sub>, &alpha;<sub>2</sub>, n<sub>2</sub></tr>
-<tr><td align="center">BL<td>Seki (2007)<td>\(S_e = w_1 Q \biggl[\dfrac{\ln(h/h_{m_1})}{\sigma_1}\biggr] + (1-w_1) Q \biggl[\dfrac{\ln(h/h_{m_2})}{\sigma_2}\biggr]\)<td>&theta;<sub>s</sub>, &theta;<sub>r</sub>, w<sub>1</sub>, h<sub>m1</sub>, &sigma;<sub>1</sub>, h<sub>m2</sub>, &sigma;<sub>2</sub></tr>
-</table>
+<p>SWRC Fit を使った研究成果を公表する時には、この論文を引用して下さい。
+<a href="http://scholar.google.com/scholar?oi=bibs&amp;hl=en&amp;cites=7295614925292719046">多くの研究で使われています。</a>.</p>
 
 <ul>
-<li>h はサクション</li>
-<li>&theta; は体積含水率</li>
-<li>S<sub>e</sub> は \(S_e = \frac{\theta-\theta_r}{\theta_s-\theta_r}\) にて定義される有効水分、すなわち &theta; = &theta;<sub>r</sub>+(&theta;<sub>s</sub> - &theta;<sub>r</sub>)S<sub>e</sub></li>
-<li>LN と BL モデルにおいて、Q(x)は<a href="http://mathworld.wolfram.com/NormalDistributionFunction.html">標準正規分布関数</a>&Phi;(x)(誤差関数とは異なる)の余関数 Q(x)=1-&Phi;(x), in which &Phi;(x)</li>
-<li>FX モデルにおいて、e は<a href="https://ja.wikipedia.org/wiki/%E3%83%8D%E3%82%A4%E3%83%94%E3%82%A2%E6%95%B0">ネイピア数</a>。FXモデルは SWRC Fit のバージョン 3.0 以上で計算できる。ウェブ版では、修正関数について C(h)=1 としている。オフライン版では修正関数を変えることができる。<a href="https://github.com/sekika/swrcfit/blob/master/doc/ja/setting.md">計算の設定</a>を参照。
-<li>他のパラメータは推定するパラメータである。</li>
+<li>Seki, K. (2007) SWRC fit - a nonlinear fitting program with a water retention curve for soils
+having unimodal and bimodal pore structure. Hydrol. Earth Syst. Sci. Discuss., 4: 407-437.
+<a href="http://dx.doi.org/10.5194/hessd-4-407-2007">doi:10.5194/hessd-4-407-2007</a></li>
 </ul>
 
-<h2>文献</h2>
+<p><a href="http://www.hydrol-earth-syst-sci-discuss.net/4/407/2007/hessd-4-407-2007.bib">BibTeX</a>
+と <a href="http://www.hydrol-earth-syst-sci-discuss.net/4/407/2007/hessd-4-407-2007.ris">EndNote</a>
+のファイルもあります。</p>
 
-<ul>
-<li>Brooks, R.H., and A.T. Corey (1964): Hydraulic properties of porous media. Hydrol. Paper 3. Colorado State Univ., Fort Collins, CO, USA.</li>
-<li>Durner, W. (1994): Hydraulic conductivity estimation for soils with heterogeneous pore structure. <i>Water Resour. Res.</i>, 30(2): 211-223. <a href="http://dx.doi.org/10.1029/93WR02676">doi:10.1029/93WR02676</a></li>
-<li>Fredlund, D.G. and Xing, A. (1994): Equations for the soil-water characteristic curve. <i>Can. Geotech. J.</i>, 31: 521-532. <a href="http://dx.doi.org/10.1139/t94-061">doi:10.1139/t94-061</a></li>
-<li>Kosugi, K. (1996): Lognormal distribution model for unsaturated soil hydraulic properties. <i>Water Resour. Res.</i> 32: 2697-2703. <a href="http://dx.doi.org/10.1029/96WR01776">doi:10.1029/96WR01776</a></li>
-<li>関勝寿 (2007) 数値計算言語Octaveによる土壌水分特性曲線の非線形回帰プログラム. 土壌の物理性, 105:67-78. <a href="https://js-soilphysics.com/data/pdf/105067.pdf">PDF</a></li>
-<li>Seki, K. (2007) SWRC fit - a nonlinear fitting program with a water retention curve for soils having unimodal and bimodal pore structure. <i>Hydrol. Earth Syst. Sci. Discuss.</i>, 4: 407-437. <a href="http://dx.doi.org/10.5194/hessd-4-407-2007">doi:10.5194/hessd-4-407-2007</a></li>
-<li>van Genuchten, M. (1980): A closed-form equation for predicting the hydraulic conductivity of unsaturated soils. <i>Soil Sci. Soc. Am. J.</i> 44:892-898.</li>
+<h2>質問</h2>
 
-</ul>
-
-<h2>このソフトを使った研究例</h2>
-
-<p>SWRC Fit は、<a href="http://scholar.google.com/scholar?oi=bibs&hl=en&cites=7295614925292719046">多くの研究で使われています</a>。</p>
+<p>SWRC Fit に関する質問の一覧は<a href="https://github.com/sekika/swrcfit/issues?q=is%3Aissue+label%3Aquestion">
+こちら</a>で見ることができます。あなたの質問を投稿するためには、GitHub のアカウントを取得して緑色の
+「New Issue」ボタンを押して下さい。
+Label は「question」を選んで下さい。日本語での質問も可能です。
+質問を公開出来ない場合には、<a href="http://www2.toyo.ac.jp/~seki_k/">作者</a>にメールを送って下さい。</p>
 
 <HR>
 
-<p>このページのPURLは <a href="http://purl.org/net/octave/">http://purl.org/net/octave/</a> です。(<a href="http://purl.org/">PURLとは?</a>)
-<a href="http://purl.org/net/linkpurl"><img src="http://purl.org/maint/badge_pur
-l.gif" alt="Purl Friendly" height="17" width="117" border="0"></a></p>
+<p>このページのPURLは <a href="http://purl.org/net/octave/">http://purl.org/net/octave/</a> です。(<a href="http://purl.org/">PURLとは?</a>)</p>
 <P>
-管理者: <a href="http://purl.org/net/jp/seki/">関 勝寿</a>
+管理者: <a href="http://www2.toyo.ac.jp/~seki_k/">関 勝寿</a>
 (ご意見・ご要望をお寄せ下さい)
 </P>
 
